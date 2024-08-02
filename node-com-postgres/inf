@@ -1,0 +1,34 @@
+Configurar o Projeto:
+npm init -y
+Instalar Dependências:
+npm install express sequelize pg pg-hstore
+npm install typescript ts-node @types/node @types/express @types/sequelize --save-dev
+Configurar o TypeScript:
+npx tsc --init
+Criar a Estrutura do Projeto:
+mkdir src
+touch src/index.ts
+touch src/database.ts
+mkdir src/models
+touch src/models/User.ts
+Configurar o Banco de Dados:
+src/database.ts
+Definir um Modelo:
+src/models/User.ts
+Configurar o Express:
+src/index.ts
+Adicionar Script de Inicialização:
+package.json
+OBS: eu sempre esqueco disso
+"scripts": {
+  "start": "ts-node src/index.ts"
+}
+Iniciar o Servidor:
+npm start
+Listar Usuários:
+http://localhost:3000/users
+Criar um Usuário:
+{
+  "name": "Leonardo",
+  "email": "leonardo@gmail.com"
+}
