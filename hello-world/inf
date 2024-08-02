@@ -1,0 +1,18 @@
+Configurar o Projeto:
+npm init -y
+Instalar Dependências:
+npm install express
+npm install typescript ts-node @types/node @types/express --save-dev
+Configurar o TypeScript:
+npx tsc --init
+Criar a Estrutura do Projeto:
+mkdir src
+touch src/index.ts
+Adicionar Script de Inicialização:
+"scripts": {
+  "start": "ts-node src/index.ts"
+}
+Iniciar o Servidor:
+npm start
+
+Agora, se você acessar http://localhost:3000 no seu navegador, você deverá ver "Hello World!".
