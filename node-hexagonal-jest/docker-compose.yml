@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: hexagona-jest
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=node-hexagonal-jest
+    ports:
+      - 5434:5432
