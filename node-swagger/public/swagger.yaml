@@ -1,0 +1,140 @@
+openapi: 3.0.0
+info:
+  title: API de Usuários
+  description: API simples de CRUD para usuários
+  version: "1.0.0"
+paths:
+  /users:
+    get:
+      summary: Retorna todos os usuários
+      responses:
+        '200':
+          description: Lista de usuários
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: "João"
+                    email:
+                      type: string
+                      example: "joao@example.com"
+    post:
+      summary: Cria um novo usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '201':
+          description: Usuário criado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "João"
+                  email:
+                    type: string
+                    example: "joao@example.com"
+  /users/{id}:
+    get:
+      summary: Retorna um usuário pelo ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do usuário
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuário encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "João"
+                  email:
+                    type: string
+                    example: "joao@example.com"
+        '404':
+          description: Usuário não encontrado
+    put:
+      summary: Atualiza um usuário pelo ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do usuário
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '200':
+          description: Usuário atualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "João"
+                  email:
+                    type: string
+                    example: "joao@example.com"
+        '404':
+          description: Usuário não encontrado
+    delete:
+      summary: Deleta um usuário pelo ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do usuário
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Usuário deletado
+        '404':
+          description: Usuário não encontrado
