@@ -11,6 +11,4 @@ npx tsc --init
 
 # Estrutura de Diretórios
 # Crie a estrutura de diretórios do projeto:
-mkdir -p src/adapters/in/http src/adapters/out/database src/application/ports/in src/application/ports/out src/application/services src/domain src/config
-
-  
+mkdir -p src/application/services src/domain/models src/domain/repositories src/infrastructure/database src/infrastructure/repositories src/infrastructure/adapters/in src/infrastructure/adapters/out src/interfaces/controllers src/interfaces/repositories && touch src/application/services/UserService.ts src/domain/models/UserModel.ts src/domain/repositories/UserRepository.ts src/infrastructure/database/database.ts src/infrastructure/repositories/UserRepositoryImpl.ts src/infrastructure/adapters/in/UserController.ts src/infrastructure/adapters/out/DatabaseAdapter.ts src/interfaces/controllers/UserController.ts src/interfaces/repositories/UserRepositoryImpl.ts src/web/server.ts
