@@ -4,7 +4,10 @@ npm install express sequelize pg pg-hstore
 npm install typescript ts-node @types/node @types/express @types/sequelize --save-dev
 npm install --save-dev typescript @types/node @types/express ts-node nodemon jest @types/jest ts-jest dotenv
 npm install swagger-ui-express swagger-jsdoc
+npm i --save-dev @types/swagger-ui-express
+npm i --save-dev @types/swagger-jsdoc
 npm install jest @types/jest ts-jest --save-dev
+npm i --save-dev @types/yamljs
 npx ts-jest config:init
 npm install dotenv
 npx tsc --init

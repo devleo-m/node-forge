@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  title: API de Usuários
+  description: API para gerenciar usuários em um banco de dados.
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3000'
+    description: Servidor local
+paths:
+  /users:
+    get:
+      summary: Retorna todos os usuários
+      description: Obtém uma lista de todos os usuários registrados.
+      responses:
+        '200':
+          description: Lista de usuários
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: ID do usuário
+                    name:
+                      type: string
+                      description: Nome do usuário
+                    email:
+                      type: string
+                      description: Email do usuário
+    post:
+      summary: Cria um novo usuário
+      description: Adiciona um novo usuário ao banco de dados.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Nome do usuário
+                email:
+                  type: string
+                  format: email
+                  description: Email do usuário
+      responses:
+        '201':
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID do usuário recém-criado
+                  name:
+                    type: string
+                    description: Nome do usuário
+                  email:
+                    type: string
+                    description: Email do usuário
+        '400':
+          description: Requisição inválida, corpo da requisição mal formatado.
+  /users/{id}:
+    get:
+      summary: Retorna um usuário pelo ID
+      description: Obtém um usuário específico pelo ID fornecido.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do usuário a ser recuperado.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuário encontrado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID do usuário
+                  name:
+                    type: string
+                    description: Nome do usuário
+                  email:
+                    type: string
+                    description: Email do usuário
+        '404':
+          description: Usuário não encontrado com o ID fornecido.
+    put:
+      summary: Atualiza um usuário pelo ID
+      description: Atualiza as informações de um usuário existente com base no ID fornecido.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do usuário a ser atualizado.
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Nome do usuário
+                email:
+                  type: string
+                  format: email
+                  description: Email do usuário
+      responses:
+        '200':
+          description: Usuário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID do usuário atualizado
+                  name:
+                    type: string
+                    description: Nome do usuário
+                  email:
+                    type: string
+                    description: Email do usuário
+        '404':
+          description: Usuário não encontrado com o ID fornecido.
+        '400':
+          description: Requisição inválida, corpo da requisição mal formatado.
+    delete:
+      summary: Deleta um usuário pelo ID
+      description: Remove um usuário da base de dados com base no ID fornecido.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do usuário a ser deletado.
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Usuário deletado com sucesso.
+        '404':
+          description: Usuário não encontrado com o ID fornecido.

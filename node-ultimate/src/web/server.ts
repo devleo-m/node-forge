@@ -1,11 +1,15 @@
 import express from 'express';
 import sequelize from '../infrastructure/database/database';
 import userRouter from '../interfaces/controllers/UserController';
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(express.json());
+const swaggerDocument = YAML.load('./public/swagger.yaml');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/', userRouter);
 
 app.get('/', async (req, res) => {
