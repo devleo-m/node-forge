@@ -1,0 +1,22 @@
+{
+    "camisa": {
+        "id": 1,
+        "name": "Camisa",
+        "price": 10
+    },
+    "sapato": {
+        "id": 2,
+        "name": "Sapato",
+        "price": 20
+    },
+    "bolsa": {
+        "id": 3,
+        "name": "Bolsa",
+        "price": 30
+    },
+    "mochila": {
+        "id": 4,
+        "name": "Mochila",
+        "price": 40
+    }
+}
