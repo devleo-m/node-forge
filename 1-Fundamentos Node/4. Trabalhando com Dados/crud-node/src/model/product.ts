@@ -1,5 +1,5 @@
 import { DataTypes, Model  } from "sequelize";
-import sequelize from "./db";
+import sequelize from "../config/database";
 
 class Product extends Model {}
 
