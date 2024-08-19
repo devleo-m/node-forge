@@ -11,11 +11,11 @@ Product.init({
     },
     name: {
         type: DataTypes.STRING,
-        //allowNull: false,
+        allowNull: false,
     },
     price: {
         type: DataTypes.FLOAT,
-        //allowNull: false,
+        allowNull: false,
     },
 }, {
     sequelize,
