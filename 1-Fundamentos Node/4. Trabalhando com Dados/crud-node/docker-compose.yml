@@ -1,11 +1,12 @@
-version: '3'
+version: '3.9'
 services:
-  db:
-    image: postgres
+  postgres:
+    image: postgres:14-alpine
+    container_name: test-docker
     restart: always
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: database-crud-node
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=database-crud-node
     ports:
-      - "5432:5432"
+      - 5434:5432
