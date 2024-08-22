@@ -2,22 +2,27 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import sequelize from '../config/database';
 import authRoutes from '../routes/authRoutes';
-import { authMiddleware } from '../middleware/authMiddleware';
+import protectedRoutes from '../routes/protectedRoutes';
+import helloWorldRoutes from '../routes/helloWorldRoutes';
 
 const app = express();
 const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-    res.send("Hello World!!!");
-})
+//Rota inicial da aplicação [hello world]
+app.use('/', helloWorldRoutes);
 
+// Rotas de autenticação
 app.use('/auth', authRoutes);
 
-// Exemplo de rota protegida
-app.get('/protected', authMiddleware, (req, res) => {
-    res.json({ message: 'Rota protegida' });
+// Rotas protegidas
+app.use('/protected', protectedRoutes);
+
+// Middleware de tratamento de erros
+app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Algo deu errado!' });
 });
 
 sequelize.sync().then(() => {
